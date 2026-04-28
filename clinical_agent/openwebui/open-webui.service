@@ -1,0 +1,48 @@
+[Unit]
+Description=Open WebUI (Clinical AI Chat Interface)
+Documentation=https://docs.openwebui.com
+After=network.target clinical-mcp-server.service
+# Start OpenWebUI after the MCP server is up
+Wants=clinical-mcp-server.service
+
+[Service]
+Type=simple
+User=dog
+WorkingDirectory=/home/dog/open-webui
+
+# ── OpenWebUI data / storage ──────────────────────────────────────────────────
+Environment="DATA_DIR=/home/dog/open-webui/data"
+
+# ── Point at the Nemotron 120B on DGX Spark ───────────────────────────────────
+# OpenWebUI will list this as an "OpenAI-compatible" endpoint under Models.
+Environment="OPENAI_API_BASE_URL=http://192.168.12.110:8123/v1"
+Environment="OPENAI_API_KEY=not-needed"
+
+# Disable Ollama integration (we use OpenAI-compat API instead)
+Environment="ENABLE_OLLAMA_API=false"
+
+# ── Security ──────────────────────────────────────────────────────────────────
+# IMPORTANT: replace this with a real random secret:
+#   python3 -c "import secrets; print(secrets.token_hex(32))"
+Environment="WEBUI_SECRET_KEY=2c1377fb25550b8dfbac237ff94ea41ea690d05421a16bc47fce2f120ae4928b"
+
+# ── Optional: disable signup after admin account is created ───────────────────
+Environment="ENABLE_SIGNUP=true"
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+Environment="LOG_LEVEL=INFO"
+
+# Installed via: uv tool install --python 3.11 open-webui
+# Binary location: /home/dog/.local/bin/open-webui
+ExecStart=/home/dog/.local/bin/open-webui serve --port 8080
+
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=open-webui
+
+[Install]
+WantedBy=multi-user.target

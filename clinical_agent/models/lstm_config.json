@@ -1,0 +1,8 @@
+{
+  "n_features": 10,
+  "hidden_dim": 64,
+  "n_layers": 2,
+  "dropout": 0.3,
+  "n_timesteps": 12,
+  "description": "Bi-LSTM + Scaled Self-Attention trained on 72h ICU temporal sequences. Input: (batch, 12, 10). Output: mortality logit (sigmoid for probability). Matches BiLSTMAttentionLogits in survival_analysis/05_lstm_model.py."
+}

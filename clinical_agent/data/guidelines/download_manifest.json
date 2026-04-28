@@ -1,0 +1,73 @@
+{
+  "surviving_sepsis_2021.pdf": {
+    "status": "ok",
+    "source": "Surviving Sepsis Campaign Guidelines 2021",
+    "tags": "sepsis,antibiotics,vasopressors,critical_care,ICU",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/surviving_sepsis_2021.pdf",
+    "notes": "Evans L et al. 2021 SSC guidelines. Open access via PMC/Springer."
+  },
+  "kdigo_aki_2012.pdf": {
+    "status": "ok",
+    "source": "KDIGO Clinical Practice Guideline for Acute Kidney Injury 2012",
+    "tags": "acute_kidney_injury,renal,creatinine,ICU,dialysis",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/kdigo_aki_2012.pdf",
+    "notes": "KDIGO 2012 AKI guideline \u2014 freely available from kdigo.org."
+  },
+  "kdigo_ckd_2024.pdf": {
+    "status": "ok",
+    "source": "KDIGO Clinical Practice Guideline for CKD Evaluation and Management 2024",
+    "tags": "chronic_kidney_disease,renal,egfr,proteinuria",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/kdigo_ckd_2024.pdf",
+    "size_mb": 4.34,
+    "notes": "KDIGO 2024 CKD update \u2014 URL may differ; check https://kdigo.org/guidelines/ckd-mbd/ if failed."
+  },
+  "aha_heart_failure_2022.pdf": {
+    "status": "failed",
+    "source": "AHA/ACC/HFSA Heart Failure Guideline 2022",
+    "tags": "heart_failure,cardiology,ejection_fraction,diuretics",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/aha_heart_failure_2022.pdf",
+    "notes": "Heidenreich PA et al. 2022 AHA/ACC/HFSA Guideline. PMC9238937. | DOWNLOAD FAILED \u2014 manual download required."
+  },
+  "ardsnet_ventilation_protocol.pdf": {
+    "status": "ok",
+    "source": "ARDSNet Low Tidal Volume Ventilation Protocol",
+    "tags": "ARDS,mechanical_ventilation,PEEP,lung_protective,tidal_volume",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/ardsnet_ventilation_protocol.pdf",
+    "notes": "ARDSNet ARMA trial ventilation protocol. Small file (~400KB)."
+  },
+  "who_sepsis_2017.pdf": {
+    "status": "failed",
+    "source": "WHO Improving Prevention, Diagnosis and Clinical Management of Sepsis 2017",
+    "tags": "sepsis,global_health,diagnosis,management,WHO",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/who_sepsis_2017.pdf",
+    "notes": "WHO WHA70.7 sepsis resolution documents \u2014 IRIS repository. | DOWNLOAD FAILED \u2014 manual download required."
+  },
+  "aha_atrial_fibrillation_2023.pdf": {
+    "status": "failed",
+    "source": "AHA/ACC/HRS Atrial Fibrillation Guideline 2023",
+    "tags": "atrial_fibrillation,cardiology,anticoagulation,rate_control",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/aha_atrial_fibrillation_2023.pdf",
+    "notes": "2023 AHA AF guideline. | DOWNLOAD FAILED \u2014 manual download required."
+  },
+  "nice_sepsis_ng253.pdf": {
+    "status": "failed",
+    "source": "NICE Guideline NG253 \u2014 Suspected Sepsis (Adults 16+) 2024",
+    "tags": "sepsis,diagnosis,NEWS2,antibiotics,NICE,UK",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/nice_sepsis_ng253.pdf",
+    "notes": "NG253 is the 2024 update replacing NG51. Covers adults 16+. | DOWNLOAD FAILED \u2014 manual download required."
+  },
+  "idsa_community_pneumonia_2019.pdf": {
+    "status": "failed",
+    "source": "IDSA/ATS Community-Acquired Pneumonia Guidelines 2019",
+    "tags": "pneumonia,antibiotics,infectious_disease,respiratory",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/idsa_community_pneumonia_2019.pdf",
+    "notes": "Metlay JP et al. 2019 IDSA/ATS CAP guidelines. | DOWNLOAD FAILED \u2014 manual download required."
+  },
+  "ashp_vancomycin_dosing_2020.pdf": {
+    "status": "failed",
+    "source": "ASHP/IDSA/SIDP Vancomycin AUC-Guided Dosing Guidelines 2020",
+    "tags": "vancomycin,pharmacokinetics,dosing,antibiotics,AUC,renal",
+    "path": "/home/dog/VS/AIinHealthcare/clinical_agent/data/guidelines/ashp_vancomycin_dosing_2020.pdf",
+    "notes": "Rybak MJ et al. 2020 vancomycin consensus guidelines. PMC7260580. | DOWNLOAD FAILED \u2014 manual download required."
+  }
+}

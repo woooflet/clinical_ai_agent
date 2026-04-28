@@ -1,0 +1,3 @@
+[submodule "drugbank-mcp-server"]
+	path = drugbank-mcp-server
+	url = https://github.com/openpharma-org/drugbank-mcp-server

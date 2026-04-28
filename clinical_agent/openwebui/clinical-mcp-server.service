@@ -1,0 +1,39 @@
+[Unit]
+Description=Clinical AI MCP Server (FastMCP — Streamable HTTP)
+Documentation=file:///home/dog/VS/clinical-ai-agent/IMPLEMENTATION_PLAN.md
+After=network.target
+# Restart OpenWebUI if the MCP server restarts (optional ordering)
+# WantedBy=open-webui.service
+
+[Service]
+Type=simple
+User=dog
+WorkingDirectory=/home/dog/VS/clinical-ai-agent/clinical_agent
+
+# GPU: restrict to GPU 0 (GPU 1 may be occupied by other workloads)
+Environment="CUDA_VISIBLE_DEVICES=0"
+
+# Override the LLM endpoint here if the DGX Spark IP ever changes
+# Environment="LLM_BASE_URL=http://192.168.12.110:8123/v1"
+
+# Use the dedicated clinicalAgentEnv Python environment
+ExecStart=/home/dog/VS/AIinHealthcare/clinicalAgentEnv/bin/python \
+    /home/dog/VS/clinical-ai-agent/clinical_agent/server.py \
+    --transport streamable-http \
+    --host 0.0.0.0 \
+    --port 8001
+
+# Graceful restart on crash; wait 10 s to let GPU memory free
+Restart=on-failure
+RestartSec=10
+
+# Give models up to 5 min to load on startup before declaring failed
+TimeoutStartSec=300
+
+# Capture all stdout/stderr in the journal
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=clinical-mcp-server
+
+[Install]
+WantedBy=multi-user.target

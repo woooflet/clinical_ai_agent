@@ -1,0 +1,48 @@
+# Clinical AI Agent — Docker Compose
+#
+# This file starts Open WebUI and SearXNG.
+# The MCP server runs on the HOST (not in Docker) because it needs direct
+# access to MIMIC-III data and trained model files.
+#
+# Usage:
+#   cp .env.example .env        # fill in your values
+#   docker compose up -d
+#   # Then start the MCP server on the host — see README.md §3
+
+services:
+
+  # ── Open WebUI ──────────────────────────────────────────────────────────────
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main   # use :cuda for GPU support
+    container_name: open-webui
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - open-webui-data:/app/backend/data
+    environment:
+      # Point at your LLM API (Nemotron, OpenAI, Ollama, etc.)
+      - OPENAI_API_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:8123/v1}
+      - OPENAI_API_KEY=${LLM_API_KEY:-not-needed}
+      # Disable Ollama (we're using an OpenAI-compatible API)
+      - ENABLE_OLLAMA_API=false
+      # Secret key — change this!
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-change-me-in-env-file}
+    extra_hosts:
+      # Allows the container to reach services running on the host machine
+      - "host.docker.internal:host-gateway"
+
+  # ── SearXNG (web search for the agent) ─────────────────────────────────────
+  searxng:
+    image: searxng/searxng
+    container_name: searxng
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./searxng-settings:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8082/
+
+volumes:
+  open-webui-data:
